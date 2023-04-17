@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">quiz</string>
+    <string name="gay_test">Gay Test</string>
+    <string name="welcome_human">Welcome_Human</string>
 </resources>

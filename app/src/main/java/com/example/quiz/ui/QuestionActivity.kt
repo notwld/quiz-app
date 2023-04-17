@@ -11,32 +11,31 @@ import com.example.quiz.models.Question
 import com.example.quiz.utils.Constants
 
 class QuestionActivity : AppCompatActivity() {
+    private var currentPos = 1
+    private lateinit var questionList: MutableList<Question>
+
     private lateinit var progressBar: ProgressBar
     private lateinit var progressText: TextView
     private lateinit var questionTxt: TextView
-
+    private lateinit var flagImg: ImageView
     private lateinit var op1: TextView
     private lateinit var op2: TextView
     private lateinit var op3: TextView
     private lateinit var op4: TextView
 
-    private lateinit var flagImg: ImageView
-
-    private var currentPos = 1
-    private lateinit var questionList:MutableList<Question>
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        questionList = Constants.getQuestions()
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)
 
 
+        questionList = Constants.getQuestions()
+
         progressBar = findViewById(R.id.progressBar)
         progressText = findViewById(R.id.currentQuestion)
         questionTxt = findViewById(R.id.question)
         flagImg = findViewById(R.id.flagImg)
-
         op1 = findViewById(R.id.opt1)
         op2 = findViewById(R.id.opt2)
         op3 = findViewById(R.id.opt3)

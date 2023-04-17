@@ -8,13 +8,33 @@ object Constants{
         val questions = mutableListOf<Question>()
         questions.add(Question(
             1,
-            "What country is this flag is?",
-            R.drawable.pepo,
+            "What country does this flag belongs to?",
+            R.drawable.pak,
             "Afghanistan",
             "Pakistan",
             "India",
             "Bangladesh",
-            1
+            2
+        ))
+        questions.add(Question(
+            3,
+            "What country does this flag belongs to?",
+            R.drawable.india,
+            "Italy",
+            "Pakistan",
+            "India",
+            "Japan",
+            3
+        ))
+        questions.add(Question(
+            2,
+            "What country does this flag belongs to?",
+            R.drawable.jap,
+            "Italy",
+            "Japan",
+            "Pakistan",
+            "Brazil",
+            2
         ))
         return questions
     }

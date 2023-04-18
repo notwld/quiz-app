@@ -68,6 +68,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         val q = questionList[questionCounter - 1]
         flagImg.setImageResource(q.img)
         progressBar.progress = questionCounter
+        progressBar.max = questionList.size
         progressText.text = "$questionCounter/${questionList.size}"
 
         questionTxt.text = q.question
@@ -138,6 +139,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     setQuestion()
                 }
+                selectedAns = 0
             }
         }
     }
@@ -178,5 +180,23 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         submitBtn.text = "Next"
+        showCorrectAns()
     }
+    private fun showCorrectAns(){
+        selectedAns = currentQuestion.correctAnswer
+        when (selectedAns) {
+            1 -> {
+                op1.background = ContextCompat.getDrawable(this, R.drawable.correct)
+            }
+            2 -> {
+                op2.background = ContextCompat.getDrawable(this, R.drawable.correct)
+            }
+            3 -> {
+                op3.background = ContextCompat.getDrawable(this, R.drawable.correct)
+            }
+            4 -> {
+                op4.background = ContextCompat.getDrawable(this, R.drawable.correct)
+            }
+    }
+}
 }

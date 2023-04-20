@@ -12,9 +12,12 @@
         android:theme="@style/Theme.Quiz.Default"
         tools:targetApi="31">
         <activity
-            android:name=".ui.QuestionActivity"
-            android:theme="@style/Theme.Quiz"
+            android:name=".ui.ResultActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.QuestionActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Quiz" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

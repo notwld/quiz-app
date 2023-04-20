@@ -1,5 +1,6 @@
 package com.example.quiz.ui
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -16,7 +17,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private var questionCounter = 1
     private var selectedAns = 0
     private var answered = false
+    private var score = 0
 
+    private lateinit var name: String
 
     private lateinit var questionList: MutableList<Question>
 
@@ -31,6 +34,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var submitBtn: Button
     private lateinit var currentQuestion: Question
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -60,6 +64,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         submitBtn.setOnClickListener(this)
 
         setQuestion()
+        if(intent.hasExtra(Constants.UserName)){
+            name = intent.getStringExtra(Constants.UserName)!!
+        }
     }
 
     private fun setQuestion() {
@@ -88,7 +95,13 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             answered = false
         }
         else{
-            Toast.makeText(this@QuestionActivity,"No More Questions!",Toast.LENGTH_LONG).show()
+            Intent(this@QuestionActivity,ResultActivity::class.java).also {
+                it.putExtra(Constants.UserName,name.toString())
+                it.putExtra(Constants.Score.toString(),score.toString())
+                it.putExtra(Constants.TotalQuestions.toString(),questionList.size.toString())
+
+                startActivity(it)
+            }
         }
     }
 
@@ -152,6 +165,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun checkAnswer() {
         answered = true
         if (selectedAns == currentQuestion.correctAnswer) {
+            score++
             setBackground(selectedAns,R.drawable.correct)
         } else {
             setBackground(selectedAns,R.drawable.wrong)

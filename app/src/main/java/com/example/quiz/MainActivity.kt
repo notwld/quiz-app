@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.quiz.ui.QuestionActivity
+import com.example.quiz.utils.Constants
 import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         subBtn.setOnClickListener {
             if (!name.text.isEmpty()) {
                 Intent(this@MainActivity,QuestionActivity::class.java).also {
+                    it.putExtra(Constants.UserName,name.text.toString())
                     startActivity(it)
                     finish()
                 }

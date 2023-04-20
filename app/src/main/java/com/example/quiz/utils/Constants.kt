@@ -4,6 +4,9 @@ import com.example.quiz.R
 import com.example.quiz.models.Question
 
 object Constants{
+    const val UserName = "username"
+    const val TotalQuestions = 0
+    const val Score = 0
     fun getQuestions(): MutableList<Question>{
         val questions = mutableListOf<Question>()
         questions.add(Question(

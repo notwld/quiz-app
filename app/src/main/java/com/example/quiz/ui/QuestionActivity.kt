@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
@@ -96,9 +95,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         }
         else{
             Intent(this@QuestionActivity,ResultActivity::class.java).also {
-                it.putExtra(Constants.UserName,name.toString())
-                it.putExtra(Constants.Score.toString(),score.toString())
-                it.putExtra(Constants.TotalQuestions.toString(),questionList.size.toString())
+                it.putExtra(Constants.UserName,name)
+                it.putExtra(Constants.Score.toString(),score)
+                it.putExtra(Constants.TotalQuestions.toString(),questionList.size)
 
                 startActivity(it)
             }
@@ -154,7 +153,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
 //                Toast.makeText(this@QuestionActivity,"You Clicked!",Toast.LENGTH_LONG).show()
                 if (!answered) {
                     checkAnswer()
-                } else {
+                }
+
+                else {
                     setQuestion()
                 }
                 selectedAns = 0
@@ -166,14 +167,14 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         answered = true
         if (selectedAns == currentQuestion.correctAnswer) {
             score++
-            setBackground(selectedAns,R.drawable.correct)
+            highlightAnswer(selectedAns,R.drawable.correct)
         } else {
-            setBackground(selectedAns,R.drawable.wrong)
+            highlightAnswer(selectedAns,R.drawable.wrong)
         }
         submitBtn.text = "Next"
         showCorrectAns()
     }
-    private fun setBackground(ans:Int,background:Int){
+    private fun highlightAnswer(ans:Int,background:Int){
         when (ans) {
             1 -> {
                 op1.background = ContextCompat.getDrawable(this, background)
@@ -193,6 +194,6 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     }
     private fun showCorrectAns(){
         selectedAns = currentQuestion.correctAnswer
-        setBackground(selectedAns,R.drawable.correct)
+        highlightAnswer(selectedAns,R.drawable.correct)
 }
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.QuestionActivity">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:orientation="vertical"
@@ -16,7 +17,7 @@
             android:id="@+id/question"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="25dp"
+
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="25sp"
@@ -26,7 +27,7 @@
             android:id="@+id/flagImg"
             android:layout_width="300dp"
             android:layout_height="250dp"
-            android:layout_marginVertical="10dp"
+            android:layout_marginVertical="5dp"
             android:contentDescription="@string/img_flag"
             tools:src="@drawable/pepo" />
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -42,6 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="9"
+                android:progressBackgroundTint="@android:color/darker_gray"
                 android:indeterminate="false"
                 android:max="10"
                 android:minHeight="50dp"
@@ -54,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 android:text="0/1"
                 android:textAlignment="center" />
 

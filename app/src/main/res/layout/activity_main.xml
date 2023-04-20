@@ -12,12 +12,12 @@
         android:layout_marginHorizontal="30dp"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="250dp"
+            android:layout_height="200dp"
             android:paddingBottom="15dp"
             android:src="@drawable/pepo" />
         <androidx.cardview.widget.CardView
@@ -31,6 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:background="@color/white"
                 android:padding="10dp">
 
                 <TextView
@@ -40,21 +41,26 @@
                     android:text="Welcome to Quiz App"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:textStyle="bold" />
-
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#000000"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxStrokeColor="#6200ED"
+                    app:boxStrokeWidth="2dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/name"
+                        android:textColor="@color/black"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Enter Your Name" />
+                        android:hint="Enter Your Name"
+                        android:outlineAmbientShadowColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button

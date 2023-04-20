@@ -65,26 +65,31 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun setQuestion() {
         resetOption()
 
-        val q = questionList[questionCounter - 1]
-        flagImg.setImageResource(q.img)
-        progressBar.progress = questionCounter
-        progressBar.max = questionList.size
-        progressText.text = "$questionCounter/${questionList.size}"
+        if(questionCounter>0 && questionCounter<=questionList.size){
+            val q = questionList[questionCounter - 1]
+            flagImg.setImageResource(q.img)
+            progressBar.progress = questionCounter
+            progressBar.max = questionList.size
+            progressText.text = "$questionCounter/${questionList.size}"
 
-        questionTxt.text = q.question
-        op1.text = q.option1
-        op2.text = q.option2
-        op3.text = q.option3
-        op4.text = q.option4
+            questionTxt.text = q.question
+            op1.text = q.option1
+            op2.text = q.option2
+            op3.text = q.option3
+            op4.text = q.option4
 
-        if (questionCounter == questionList.size) {
-            submitBtn.text = "Finish"
-        } else {
-            submitBtn.text = "Submit"
+            if (questionCounter == questionList.size) {
+                submitBtn.text = "Finish"
+            } else {
+                submitBtn.text = "Submit"
+            }
+            questionCounter++
+            currentQuestion = q
+            answered = false
         }
-        questionCounter++
-        currentQuestion = q
-        answered = false
+        else{
+            Toast.makeText(this@QuestionActivity,"No More Questions!",Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun resetOption() {
@@ -147,56 +152,33 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun checkAnswer() {
         answered = true
         if (selectedAns == currentQuestion.correctAnswer) {
-            when (selectedAns) {
-                1 -> {
-                    op1.background = ContextCompat.getDrawable(this, R.drawable.correct)
-                }
-                2 -> {
-                    op2.background = ContextCompat.getDrawable(this, R.drawable.correct)
-                }
-                3 -> {
-                    op3.background = ContextCompat.getDrawable(this, R.drawable.correct)
-                }
-                4 -> {
-                    op4.background = ContextCompat.getDrawable(this, R.drawable.correct)
-                }
-
-
-            }
+            setBackground(selectedAns,R.drawable.correct)
         } else {
-            when (selectedAns) {
-                1 -> {
-                    op1.background = ContextCompat.getDrawable(this, R.drawable.wrong)
-                }
-                2 -> {
-                    op2.background = ContextCompat.getDrawable(this, R.drawable.wrong)
-                }
-                3 -> {
-                    op3.background = ContextCompat.getDrawable(this, R.drawable.wrong)
-                }
-                4 -> {
-                    op4.background = ContextCompat.getDrawable(this, R.drawable.wrong)
-                }
-            }
+            setBackground(selectedAns,R.drawable.wrong)
         }
         submitBtn.text = "Next"
         showCorrectAns()
     }
-    private fun showCorrectAns(){
-        selectedAns = currentQuestion.correctAnswer
-        when (selectedAns) {
+    private fun setBackground(ans:Int,background:Int){
+        when (ans) {
             1 -> {
-                op1.background = ContextCompat.getDrawable(this, R.drawable.correct)
+                op1.background = ContextCompat.getDrawable(this, background)
             }
             2 -> {
-                op2.background = ContextCompat.getDrawable(this, R.drawable.correct)
+                op2.background = ContextCompat.getDrawable(this, background)
             }
             3 -> {
-                op3.background = ContextCompat.getDrawable(this, R.drawable.correct)
+                op3.background = ContextCompat.getDrawable(this, background)
             }
             4 -> {
-                op4.background = ContextCompat.getDrawable(this, R.drawable.correct)
+                op4.background = ContextCompat.getDrawable(this, background)
             }
+
+
+        }
     }
+    private fun showCorrectAns(){
+        selectedAns = currentQuestion.correctAnswer
+        setBackground(selectedAns,R.drawable.correct)
 }
 }

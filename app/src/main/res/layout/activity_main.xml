@@ -9,8 +9,9 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:layout_marginHorizontal="30dp"
         android:gravity="center"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -20,7 +21,7 @@
             android:paddingBottom="15dp"
             android:src="@drawable/pepo" />
         <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="210dp"
             app:cardCornerRadius="15dp"
 

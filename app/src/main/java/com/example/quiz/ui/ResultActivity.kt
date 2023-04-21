@@ -34,7 +34,7 @@ class ResultActivity : AppCompatActivity() {
 
         val _score = intent.getIntExtra(Constants.Score.toString(),0)
         val questions = Constants.getQuestions().size
-        score.text = _score.toString() + "out of $questions"
+        score.text = _score.toString() + " out of $questions"
 
         if (_score>questions/2){
             img.setImageResource(R.drawable.won)

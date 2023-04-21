@@ -24,6 +24,7 @@
             tools:text="What flag this country belongs to?" />
 
         <ImageView
+            android:background="@drawable/border"
             android:id="@+id/flagImg"
             android:layout_width="300dp"
             android:layout_height="250dp"

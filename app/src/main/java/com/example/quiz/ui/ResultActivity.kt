@@ -33,10 +33,10 @@ class ResultActivity : AppCompatActivity() {
         val _name = intent.getStringExtra(Constants.UserName)
 
         val _score = intent.getIntExtra(Constants.Score.toString(),0)
+        val questions = Constants.getQuestions().size
+        score.text = _score.toString() + "out of $questions"
 
-        score.text = _score.toString()
-
-        if (_score>Constants.getQuestions().size/2){
+        if (_score>questions/2){
             img.setImageResource(R.drawable.won)
             name.text ="Congratulations! " + _name.toString().uppercase()
 

@@ -31,18 +31,20 @@ class ResultActivity : AppCompatActivity() {
         }
 
         val _name = intent.getStringExtra(Constants.UserName)
-        name.text = _name.toString().uppercase()
 
         val _score = intent.getIntExtra(Constants.Score.toString(),0)
-        val questionLen = intent.getIntExtra(Constants.TotalQuestions.toString(),0)
 
         score.text = _score.toString()
 
-        if (_score>questionLen.toInt()/2){
+        if (_score>Constants.getQuestions().size/2){
             img.setImageResource(R.drawable.won)
+            name.text ="Congratulations! " + _name.toString().uppercase()
+
         }
         else{
             img.setImageResource(R.drawable.lost)
+            name.text ="Better Luck Next Time! " + _name.toString().uppercase()
+
         }
     }
 }

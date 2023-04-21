@@ -92,13 +92,13 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             questionCounter++
             currentQuestion = q
             answered = false
+            submitBtn.isEnabled = false
+
         }
         else{
             Intent(this@QuestionActivity,ResultActivity::class.java).also {
                 it.putExtra(Constants.UserName,name)
                 it.putExtra(Constants.Score.toString(),score)
-                it.putExtra(Constants.TotalQuestions.toString(),questionList.size)
-
                 startActivity(it)
             }
         }
@@ -132,7 +132,7 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             this,
             R.drawable.selected_item
         )
-
+        submitBtn.isEnabled = true
     }
 
     override fun onClick(view: View?) {
@@ -150,11 +150,9 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
                 selectOption(op4, 4)
             }
             R.id.ansSubBtn -> {
-//                Toast.makeText(this@QuestionActivity,"You Clicked!",Toast.LENGTH_LONG).show()
                 if (!answered) {
                     checkAnswer()
                 }
-
                 else {
                     setQuestion()
                 }
@@ -166,8 +164,8 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
     private fun checkAnswer() {
         answered = true
         if (selectedAns == currentQuestion.correctAnswer) {
-            score++
             highlightAnswer(selectedAns,R.drawable.correct)
+            score++
         } else {
             highlightAnswer(selectedAns,R.drawable.wrong)
         }
